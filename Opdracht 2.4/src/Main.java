@@ -107,7 +107,9 @@ public class Main implements ButtonListener {
 			}
 		}
 		if (melody == 2) {
-			Sound.playSample(new File("Guitar.wav"));
+			for (int i = 0; i < melody2.length; i++) {
+				Sound.playNote(Sound.XYLOPHONE, melody2[i], 50);
+			}
 		}
 	}
 }
