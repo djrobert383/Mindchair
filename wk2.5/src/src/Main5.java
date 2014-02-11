@@ -17,8 +17,7 @@ public class Main5 {
 		motorC.setAcceleration(150);
 		motorA.setSpeed(360);
 		motorC.setSpeed(360);
-		motorA.rotateTo(1080);
-		motorC.rotateTo(1080);
+		
 		motorA.forward();
 		motorC.forward();
 
@@ -28,6 +27,8 @@ public class Main5 {
 
 		motorA.stop();
 		motorC.stop();
+		motorA.rotateTo(1080);
+		motorC.rotateTo(1080);
 		int tachoCountA = motorA.getTachoCount();
 		int tachoCountC = motorC.getTachoCount();
 		System.out.println("count A = " + tachoCountA + " (should be 1080)");
