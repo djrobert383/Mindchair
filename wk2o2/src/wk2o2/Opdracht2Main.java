@@ -2,37 +2,32 @@ package wk2o2;
 
 import java.util.ArrayList;
 
+import lejos.nxt.LCD;
+
 public class Opdracht2Main {
 	public static void main(String[] arg){
+		
 		ArrayList<MyThread> draden = new ArrayList<MyThread>();
+		
 		int two = 0;
 		int i = 0;
 		boolean isTrue = true;
+		
 		while(isTrue){
 			
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			i++;
+			LCD.clear();			
+			
 			try{
 				draden.add(new MyThread(i));
 				draden.get(i).start();
 			} catch (Exception e){
 			}
-						
+			i++;	
 			System.out.println(i);
 			long bt = 1024;
 			long avMem = (Runtime.getRuntime().freeMemory()/bt);
 			System.out.println(avMem);
-			try{
-				Thread.sleep(300);
-			} catch (InterruptedException e){
-			}
-			if(avMem < 2){
+			if(avMem < 3){
 				break;
 			}
 		}
@@ -43,8 +38,9 @@ public class Opdracht2Main {
 			
 		}
 		
-		System.out.println("2");
-		System.out.println(Runtime.getRuntime().freeMemory());
+		LCD.clear();
+		
+		System.out.println("Done");
 		
 		try{
 			Thread.sleep(1000);
