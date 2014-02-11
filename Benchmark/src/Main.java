@@ -9,6 +9,7 @@ public class Main {
 		benchmark(20);
 		benchmark(40);
 		benchmark(80);
+		benchmark(5);
 		scoreCalc();
 	}
 
