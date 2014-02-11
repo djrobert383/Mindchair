@@ -1,4 +1,8 @@
+import java.awt.Desktop;
+import java.awt.Toolkit;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Properties;
 
 
 
@@ -7,24 +11,36 @@ import java.util.Date;
 public class Main {
 
 	public static void main(String[] args) {
-		Benchmark();
-		Benchmark();
-		Benchmark();
-		Benchmark();
-		Benchmark();
-		Benchmark();
+		systemInfo();
+		benchmark(1);
+		benchmark(5);
+		benchmark(10);
+		benchmark(20);
+		benchmark(40);
+		benchmark(80);
 
 	}
-	public static void Benchmark(){
-		Date date = new Date();
-		long time1=date.getTime();
-		for(int i=0;i<10000000;i++){
+	public static void benchmark(int amount){
+		amount = amount*1000000;
+		long startTime = System.currentTimeMillis();
+		for(int i=0;i<amount;i++){
 			
 			double random = (Math.cos(Math.sin(Math.random()/50*Math.random()))*Math.E)/Math.PI;
 		}
-		date = new Date();
-		long time2=date.getTime();
-		System.out.println("---------------------------------------------");
-		System.out.println(time2-time1+" ms");
+		long endTime = System.currentTimeMillis();
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		System.out.println("-------------------- "+amount+"x --------------------");
+		System.out.println(endTime-startTime+" ms");
+	}
+	public static void systemInfo(){
+		System.out.println("-------------------System Info--------------------");
+		System.out.println("Os name: "+System.getProperty("os.name"));
+		System.out.println("Os version: "+System.getProperty("os.version"));
+		System.out.println("Amount of cores: "+Runtime.getRuntime().availableProcessors());
+		System.out.println("Amount of memmory: "+Runtime.getRuntime().maxMemory());
+		System.out.println("Free memmory: "+Runtime.getRuntime().freeMemory());
+		System.out.println("--------------------------------------------------");
+		System.out.println();
+		
 	}
 }
