@@ -13,7 +13,7 @@ public class Main {
 	}
 
 	public static void benchmark(long amount) {
-		amount = amount*100000;
+		amount = amount*10000;
 		long startTime = System.currentTimeMillis();
 		for (int i = 0; i < amount; i++) {
 
