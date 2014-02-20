@@ -1,4 +1,4 @@
-package Opdracht3;
+package src.Opdracht3;
 
 import lejos.nxt.Button;
 import lejos.nxt.ButtonListener;
