@@ -50,17 +50,19 @@ public class DriveCircle {
 	}
 
 	public void berekenSnelheid() {
-		// v = s/t
+		// v = s/thf09  bv  rhrtf  
 		buitenSnelheid = buitenOmtrek / tijd;
 		binnenSnelheid = binnenOmtrek / tijd;
 
 	}
 
 	public void start() {
+		System.out.println(binnenSnelheid);
+		System.out.println(buitenSnelheid);
 		Motor.A.setSpeed(binnenSnelheid);
 		Motor.B.setSpeed(buitenSnelheid);
-		Motor.A.forward();
-		Motor.A.forward();
+		Motor.A.backward();
+		Motor.B.backward();
 		while (true) {
 
 		}
