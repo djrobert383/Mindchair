@@ -36,9 +36,10 @@ public class DriveCircle {
 		berekenSnelheid();
 	}
 
-	public void setSnelheid(float snelheid) {
+	public void setSnelheid(float snelheid, float buitenOmtrek) {
 		// t = s/v
-		tijd = snelheid / buitenOmtrek;
+		this.buitenOmtrek=buitenOmtrek;
+		tijd = snelheid / this.buitenOmtrek;
 		berekenOmtrek();
 		berekenSnelheid();
 	}
