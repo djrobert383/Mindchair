@@ -38,7 +38,7 @@ public class DriveCircle {
 
 	public void setSnelheid(float snelheid, float buitenOmtrek) {
 		// t = s/v
-		this.buitenOmtrek=buitenOmtrek;
+		this.buitenOmtrek = buitenOmtrek;
 		tijd = snelheid / this.buitenOmtrek;
 		berekenOmtrek();
 		berekenSnelheid();
@@ -61,5 +61,8 @@ public class DriveCircle {
 		Motor.B.setSpeed(buitenSnelheid);
 		Motor.A.forward();
 		Motor.A.forward();
+		while (true) {
+
+		}
 	}
 }
