@@ -1,3 +1,5 @@
+import lejos.nxt.Motor;
+
 public class DriveCircle {
 
 	private float wheelSpace;// afstand tussen de wielen in mm
@@ -20,12 +22,9 @@ public class DriveCircle {
 	}
 
 	public void start() {
-		System.out.println(wheelSpace);
-		System.out.println(straal);
-		System.out.println(tijd);
-		System.out.println(buitenOmtrek);
-		System.out.println(binnenOmtrek);
-		System.out.println(buitenSnelheid);
-		System.out.println(binnenSnelheid);
+		Motor.A.setSpeed(binnenSnelheid);
+		Motor.B.setSpeed(buitenSnelheid);
+		Motor.A.forward();
+		Motor.A.forward();
 	}
 }
