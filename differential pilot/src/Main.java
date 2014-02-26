@@ -38,7 +38,7 @@ public class Main implements ButtonListener {
 		
 		System.out.println("Vierkant met zijden van 50 cm");
 		Button.waitForAnyPress();
-		driveSquare();
+		drive360(4,500f);
 		LCD.clear();
 		
 		System.out.println("Vooruit als je escape ingedrukt houd");
@@ -81,10 +81,10 @@ public class Main implements ButtonListener {
 		diferentialPilot.arc(radius, angle);
 	}
 
-	public void driveSquare() {
-		for (int i = 0; i < 4; i++) {
-			diferentialPilot.travel(500);
-			diferentialPilot.rotate(90);
+	public void drive360(int sides, float sideDistance) {
+		for (int i = 0; i < sides; i++) {
+			diferentialPilot.travel(sideDistance);
+			diferentialPilot.rotate((360/sides));
 		}
 
 	}
