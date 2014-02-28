@@ -17,8 +17,8 @@ public class Main implements ButtonListener {
 	public Main() {
 		diferentialPilot = new DifferentialPilot(wheelDiameter, 160, Motor.B,
 				Motor.A);
-		Button.waitForAnyPress();
 		System.out.println("Circel met straal 20 cm");
+		Button.waitForAnyPress();
 		driveArc(200);
 		LCD.clear();
 		
