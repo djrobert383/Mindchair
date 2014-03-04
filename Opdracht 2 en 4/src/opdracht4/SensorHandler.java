@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class SensorHandler extends Thread {
 	private static SensorHandler singleton = null;
-	private ArrayList<MyUltrasonicSensor> theSensors = new ArrayList<MyUltrasonicSensor>();
-	private int PERIOD = 100;
+	private ArrayList<UpdatingSensor> theSensors = new ArrayList<UpdatingSensor>();
+	private int PERIOD = 10;
 
 	private SensorHandler() {
 		this.setDaemon(true);
@@ -16,7 +16,7 @@ public class SensorHandler extends Thread {
 		while (true) {
 			try {
 				synchronized (this) {
-					for (MyUltrasonicSensor sensor : theSensors)
+					for (UpdatingSensor sensor : theSensors)
 						sensor.updateState();
 				}
 				Thread.sleep(PERIOD);
@@ -26,12 +26,14 @@ public class SensorHandler extends Thread {
 	}
 
 	public static SensorHandler getInstance() {
-		if (singleton == null)
+		if (singleton == null) {
 			singleton = new SensorHandler();
+		}
 		return singleton;
+
 	}
 
-	public void addSensor(MyUltrasonicSensor sensor) {
+	public void addSensor(UpdatingSensor sensor) {
 		theSensors.add(sensor);
 	}
 }

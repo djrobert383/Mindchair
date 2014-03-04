@@ -1,5 +1,5 @@
 package opdracht4;
 
 public interface SensorListener {
-	public void stateChanged(float oldValue, float newValue);
+	public void stateChanged(UpdatingSensor updatingSensor, float oldValue, float newValue);
 }
