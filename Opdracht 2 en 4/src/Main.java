@@ -14,7 +14,9 @@ public class Main {
 	public Main() {
 		cs = new ColorSensor(SensorPort.S2);
 		ls = new LightSensor(SensorPort.S1);
-		System.out.println("Geef een witte ondergrond");
+		System.out.println("Geef een witte ");
+		System.out.println("ondergrond");
+		
 		System.out.println("en druk op enter");
 		Button.ENTER.waitForPress();
 		cs.calibrateHigh();
