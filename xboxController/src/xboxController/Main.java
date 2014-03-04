@@ -1,16 +1,21 @@
 package xboxController;
 
-import net.java.games.input.*;
+import net.java.games.input.Component;
+import net.java.games.input.Controller;
+import net.java.games.input.ControllerEnvironment;
 
 public class Main {
-	public Controller xbox;
-	private Component xAxis;
-	private Component yAxis;
+	public static Controller xbox;
+	public static Component xAxis;
+	public static Component yAxis;
 
 	private float old;
 
 	public static void main(String[] args) {
 		new Main();
+		new ControllerPol(xbox);
+		new dataShow(xAxis, yAxis);
+
 	}
 
 	public Main() {
@@ -32,11 +37,6 @@ public class Main {
 				if (components[i].getName().equals("X Axis")) {
 					xAxis = components[i];
 				}
-			}
-			System.out.println(yAxis.getDeadZone());
-			System.out.println(yAxis.getName());
-			for(int i = 0; i< 5000; i++){
-				
 			}
 		}
 
