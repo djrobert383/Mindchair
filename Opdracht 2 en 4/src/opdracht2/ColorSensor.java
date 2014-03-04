@@ -1,3 +1,4 @@
+package opdracht2;
 import lejos.nxt.SensorConstants;
 import lejos.nxt.SensorPort;
 import lejos.robotics.ColorDetector;
