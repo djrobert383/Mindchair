@@ -1,13 +1,12 @@
 package opdracht4;
 
-import lejos.nxt.ColorSensor;
 import lejos.nxt.SensorPort;
 
-public class MyColorSensor extends ColorSensor implements UpdatingSensor{
+public class ColorSensor extends lejos.nxt.ColorSensor implements UpdatingSensor{
 	private float value;
 	private SensorListener listener;
 
-	public MyColorSensor(SensorPort sp) {
+	public ColorSensor(SensorPort sp) {
 		super(sp);
 		setFloodlight(Color.WHITE);
 	}

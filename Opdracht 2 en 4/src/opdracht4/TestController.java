@@ -12,8 +12,8 @@ public class TestController implements SensorListener {
 	public TestController() {
 		SensorHandler sh = SensorHandler.getInstance();
 
-		MyUltrasonicSensor mus = new MyUltrasonicSensor(SensorPort.S4);
-		MyColorSensor cs = new MyColorSensor(SensorPort.S2);
+		UltrasonicSensor mus = new UltrasonicSensor(SensorPort.S4);
+		ColorSensor cs = new ColorSensor(SensorPort.S2);
 
 		sh.addSensor(cs);
 		sh.addSensor(mus);

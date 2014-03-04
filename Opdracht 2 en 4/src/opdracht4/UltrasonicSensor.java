@@ -1,13 +1,12 @@
 package opdracht4;
 
 import lejos.nxt.SensorPort;
-import lejos.nxt.UltrasonicSensor;
 
-public class MyUltrasonicSensor extends UltrasonicSensor implements UpdatingSensor{
+public class UltrasonicSensor extends lejos.nxt.UltrasonicSensor implements UpdatingSensor{
 	private float value;
 	private SensorListener listener;
 
-	public MyUltrasonicSensor(SensorPort sp) {
+	public UltrasonicSensor(SensorPort sp) {
 		super(sp);
 	}
 
