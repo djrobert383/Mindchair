@@ -1,5 +1,37 @@
 package opdracht4;
 
-public class SensorHandler {
+import java.util.ArrayList;
 
+public class SensorHandler extends Thread {
+	private static SensorHandler singleton = null;
+	private ArrayList<MyUltrasonicSensor> theSensors = new ArrayList<MyUltrasonicSensor>();
+	private int PERIOD = 100;
+
+	private SensorHandler() {
+		this.setDaemon(true);
+		start();
+	}
+
+	public void run() {
+		while (true) {
+			try {
+				synchronized (this) {
+					for (MyUltrasonicSensor sensor : theSensors)
+						sensor.updateState();
+				}
+				Thread.sleep(PERIOD);
+			} catch (InterruptedException exception) {
+			}
+		}
+	}
+
+	public static SensorHandler getInstance() {
+		if (singleton == null)
+			singleton = new SensorHandler();
+		return singleton;
+	}
+
+	public void addSensor(MyUltrasonicSensor sensor) {
+		theSensors.add(sensor);
+	}
 }
