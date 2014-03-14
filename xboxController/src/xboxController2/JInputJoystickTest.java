@@ -8,7 +8,7 @@ import net.java.games.input.Version;
 /**
  * 
  * @author endolf 
- * from: http://www.java-gaming.org/index.php/topic,16866.0
+ * from: http://www.java-gaming.org/index.php/topic,16866.
  * 
  */
 

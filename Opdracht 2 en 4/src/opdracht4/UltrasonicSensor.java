@@ -24,7 +24,11 @@ public class UltrasonicSensor extends lejos.nxt.UltrasonicSensor implements
 	public void addListener(SensorListener listener) {
 		this.listener = listener;
 	}
-
+	
+	/**
+	 * constructor for testcontroller
+	 * @return String
+	 */
 	@Override
 	public String getSensorType() {
 		return "Ultrasonic";

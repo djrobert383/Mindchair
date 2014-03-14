@@ -9,6 +9,10 @@ public class TestController implements SensorListener {
 		new TestController();
 	}
 
+	/**
+	 * Constructor for TestController
+	 * 
+	 */
 	public TestController() {
 		SensorHandler sh = SensorHandler.getInstance();
 

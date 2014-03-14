@@ -30,4 +30,5 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements UpdatingSensor
 		return "Color";
 	}
 
+	
 }
