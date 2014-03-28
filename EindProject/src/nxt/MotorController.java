@@ -15,25 +15,26 @@ public class MotorController {
 
 	public MotorController(float speed) {
 		this.speed = speed;
+		differentialPilot = new DifferentialPilot(wheelDiameter, wheelSpace, leftMotor, leftMotor);
 	}
 
 	public void driveArc(float turnRadius) {
-
+		differentialPilot.arcForward(turnRadius);
 	}
 
 	public void driveForward() {
-
+		differentialPilot.forward();
 	}
 
 	public void stop() {
-
+		differentialPilot.stop();
 	}
 
 	public void turnOnPlace(float degrees) {
-
+		differentialPilot.rotate(degrees);
 	}
 
 	public void driveBackwards() {
-
+		differentialPilot.backward();
 	}
 }
