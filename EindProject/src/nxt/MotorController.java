@@ -26,8 +26,8 @@ public class MotorController {
 		differentialPilot.stop();
 	}
 
-	public static void turnOnPlace(float degrees) {
-		differentialPilot.rotate(degrees, true);
+	public static void turnOnPlace(float degrees, boolean asdf) {
+		differentialPilot.rotate(degrees, asdf);
 	}
 
 	public static void driveBackwards() {
@@ -36,5 +36,9 @@ public class MotorController {
 
 	public static void driveDistance(float distance) {
 		differentialPilot.travel(distance);
+	}
+
+	public static boolean isMoving() {
+		return differentialPilot.isMoving();
 	}
 }

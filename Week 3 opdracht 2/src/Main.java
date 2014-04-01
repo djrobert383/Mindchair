@@ -1,10 +1,8 @@
 import lejos.nxt.Motor;
 
-
 public class Main {
 
 	private static float WHEEL_DIAMETER = 3.6f;
-	private static float WHEEL_DISTANCE = 14.0f;	
 	
 	public Main(){
 		drive(10,100);
@@ -22,7 +20,7 @@ public class Main {
 		Motor.B.setSpeed(motor_speed);
 		Motor.A.rotate((int) degrees_to_turn, true);
 		Motor.B.rotate((int) degrees_to_turn);
-				
+
 	}
 	
 	public static void main(String[] args) {

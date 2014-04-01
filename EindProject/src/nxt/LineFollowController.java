@@ -1,19 +1,14 @@
 package nxt;
 
-public class LineFollowController extends Thread implements
-		LightSensorListener, UltraSonicSensorListener {
+public class LineFollowController extends Thread implements LightSensorListener {
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
 	private boolean nothingInTheWay;
 	private static boolean pause;
 
-	private final int MINIMUM_SAFE_DISTANCE = 30;
-
-	public LineFollowController(ColorSensor cs, LightSensor ls,
-			UltraSonicSensor us) {
+	public LineFollowController(ColorSensor cs, LightSensor ls) {
 		cs.addListener(this);
 		ls.addListener(this);
-		us.addListener(this);
 		this.start();
 	}
 
@@ -22,9 +17,9 @@ public class LineFollowController extends Thread implements
 			if (!pause) {
 				if (nothingInTheWay) {
 					if (!leftOnRoute) {
-						MotorController.turnOnPlace(-5);
+						MotorController.turnOnPlace(-5, false);
 					} else if (!rightOnRoute) {
-						MotorController.turnOnPlace(5);
+						MotorController.turnOnPlace(5, false);
 					} else {
 						MotorController.driveForward();
 					}
@@ -32,16 +27,6 @@ public class LineFollowController extends Thread implements
 
 				}
 			}
-		}
-	}
-
-	@Override
-	public void ultraSonicChanged(UpdatingSensor us, float oldValue,
-			float newValue) {
-		if (newValue < MINIMUM_SAFE_DISTANCE) {
-			nothingInTheWay = false;
-		} else {
-			nothingInTheWay = true;
 		}
 	}
 

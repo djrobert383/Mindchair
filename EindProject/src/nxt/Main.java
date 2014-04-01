@@ -15,6 +15,6 @@ public class Main {
 		sensors.add(ls);
 		sensors.add(us);
 		new CalibreerController(sensors).calibreer();
-		// LineFollowController lfc = new LineFollowController(cs, ls, us);
+		// LineFollowController lfc = new LineFollowController(cs, ls);
 	}
 }
