@@ -1,6 +1,5 @@
 package nxt;
 
-import nxt.LightSensorListener.Position;
 import lejos.nxt.SensorPort;
 
 public class Main {

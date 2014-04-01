@@ -2,7 +2,6 @@ package nxt;
 
 import java.util.ArrayList;
 
-import nxt.LightSensorListener.Position;
 import lejos.nxt.SensorPort;
 
 public class ColorSensor extends lejos.nxt.ColorSensor implements

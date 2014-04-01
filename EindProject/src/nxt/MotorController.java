@@ -9,8 +9,8 @@ public class MotorController {
 	private final static float wheelSpace = 130;
 	private final static NXTRegulatedMotor leftMotor = Motor.A;
 	private final static NXTRegulatedMotor rightMotor = Motor.B;
-
 	private float speed;
+	
 	private static DifferentialPilot differentialPilot = new DifferentialPilot(
 			wheelDiameter, wheelSpace, leftMotor, rightMotor);
 

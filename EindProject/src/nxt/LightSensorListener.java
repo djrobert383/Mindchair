@@ -1,10 +1,7 @@
 package nxt;
 
 public interface LightSensorListener {
-	public enum Position {
-		Left, Right;
-	}
 
-	public void lightSensorChanged(LightSensorListener.Position position,
+	public void lightSensorChanged(Position position,
 			UpdatingSensor updatingsensor, float oldValue, float newValue);
 }
