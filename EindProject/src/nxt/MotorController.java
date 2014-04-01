@@ -33,4 +33,7 @@ public class MotorController {
 	public static void driveBackwards() {
 		differentialPilot.backward();
 	}
+	public static void driveDistance(float distance){
+		differentialPilot.travel(distance);
+	}
 }
