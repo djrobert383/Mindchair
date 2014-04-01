@@ -12,9 +12,10 @@ public class CalibreerController {
 
 	public void calibreer() {
 		int meetWaarde;
+		MotorController.turnOnPlace(360);
 		for (int graden = 0; graden < (360); graden+=rotationDegrees) {
 			MotorController.turnOnPlace(rotationDegrees);
-			for(UpdatingSensor sensor : sensors){
+			 for(UpdatingSensor sensor : sensors){
 				if(sensor.getSensorType() == SensorType.Colorsensor){
 					ColorSensor tmp = (ColorSensor) sensor;
 					meetWaarde = tmp.getRawLightValue();
