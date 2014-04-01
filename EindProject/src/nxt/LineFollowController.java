@@ -8,8 +8,7 @@ public class LineFollowController extends Thread implements
 	
 	private final int MINIMUM_SAFE_DISTANCE = 30;
 
-	public LineFollowController(ColorSensor cs, LightSensor ls,
-			UltraSonicSensor us) {
+	public LineFollowController(ColorSensor cs, LightSensor ls, UltraSonicSensor us) {
 		cs.addListener(this);
 		ls.addListener(this);
 		us.addListener(this);

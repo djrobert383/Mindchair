@@ -6,9 +6,11 @@ import lejos.nxt.SensorPort;
 
 public class LightSensor extends lejos.nxt.LightSensor implements
 		UpdatingSensor {
+	
 	private float value;
 	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();
 	private Position position;
+	
 	public LightSensor(SensorPort sensorport, Position position) {
 		super(sensorport);
 		this.position=position;
@@ -40,6 +42,10 @@ public class LightSensor extends lejos.nxt.LightSensor implements
 		} else {
 			System.err.print("not removed");
 		}
+	}
+	 
+	public int getNormalizedLightValue () {
+		   return getLightValue();
 	}
 
 }
