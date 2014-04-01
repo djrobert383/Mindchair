@@ -4,6 +4,10 @@ import lejos.nxt.Motor;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.robotics.navigation.DifferentialPilot;
 
+/**
+ * @author Robert
+ * @version 0.2
+ */
 public class MotorController {
 	private final static float wheelDiameter = 32;
 	private final static float wheelSpace = 130;

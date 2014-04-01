@@ -1,4 +1,8 @@
 package nxt;
+/**
+ * @author Robert
+ * @version 0.2
+ */
 
 public interface UltraSonicSensorListener {
 	/**

@@ -3,12 +3,12 @@ import java.util.ArrayList;
 
 import lejos.nxt.SensorPort;
 
+/**
+ * @author Robert
+ * @version 0.2
+ */
 public class ColorSensor extends lejos.nxt.ColorSensor implements
 		UpdatingSensor {
-	/**
-	 * @author Robert
-	 * @version 0.2
-	 */
 	private float value;
 	private Position position;
 	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();

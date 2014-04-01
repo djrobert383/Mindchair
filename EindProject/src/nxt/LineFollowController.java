@@ -1,11 +1,11 @@
 package nxt;
 
+/**
+ * @author Robert
+ * @version 0.2
+ */
 public class LineFollowController extends Thread implements
 		LightSensorListener, UltraSonicSensorListener {
-	/**
-	 * @author Robert
-	 * @version 0.2
-	 */
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
 	private boolean nothingInTheWay;
