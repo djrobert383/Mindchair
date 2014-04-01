@@ -1,5 +1,7 @@
 package nxt;
 
+import java.util.ArrayList;
+
 import lejos.nxt.SensorPort;
 
 public class Main {
@@ -7,6 +9,12 @@ public class Main {
 		ColorSensor cs = new ColorSensor(SensorPort.S1, Position.Left);
 		LightSensor ls = new LightSensor(SensorPort.S2, Position.Right);
 		UltraSonicSensor us = new UltraSonicSensor(SensorPort.S4);
-		LineFollowController lfc = new LineFollowController(cs, ls, us);
+		
+		ArrayList<UpdatingSensor> sensors = new ArrayList<UpdatingSensor>();
+		sensors.add(cs);
+		sensors.add(ls);
+		sensors.add(us);
+		new CalibreerController(sensors).calibreer();
+		//LineFollowController lfc = new LineFollowController(cs, ls, us);
 	}
 }

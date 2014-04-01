@@ -29,7 +29,7 @@ public class LineFollowController extends Thread implements
 						MotorController.driveForward();
 					}
 				} else {
-					MotorController.stop();
+					
 				}
 			}
 		}
