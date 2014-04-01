@@ -6,7 +6,10 @@ import lejos.nxt.SensorPort;
 
 public class LightSensor extends lejos.nxt.LightSensor implements
 		UpdatingSensor {
-	
+	/**
+	 * @author Robert
+	 * @version 0.2
+	 */
 	private float value;
 	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();
 	private Position position;

@@ -1,11 +1,14 @@
 package nxt;
-
 import java.util.ArrayList;
 
 import lejos.nxt.SensorPort;
 
 public class ColorSensor extends lejos.nxt.ColorSensor implements
 		UpdatingSensor {
+	/**
+	 * @author Robert
+	 * @version 0.2
+	 */
 	private float value;
 	private Position position;
 	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();
@@ -67,19 +70,33 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 		}
 	}
 
+	/**
+	 * set the lowest light value
+	 * 
+	 * @param low
+	 *            the lowest light value
+	 */
 	public void calibrateLow(int low) {
-	    _zero = low;
+		_zero = low;
 	}
-	 
+
+	/**
+	 * set the highest light value
+	 * 
+	 * @param high
+	 *            the highest light value
+	 */
 	public void calibrateHigh(int high) {
-		 _hundred = high;
-	 }
-	 
-	public int getNormalizedLightValue () {
-		    if(_hundred == _zero) return 0;
-		    return 100 * (getRawLightValue() - _zero) /
-		                 ( _hundred - _zero); 
+		_hundred = high;
 	}
-		
+
+	/**
+	  * @return int the normalized value ranging from 0-100
+	  */
+	public int getNormalizedLightValue() {
+		if (_hundred == _zero)
+			return 0;
+		return 100 * (getRawLightValue() - _zero) / (_hundred - _zero);
+	}
 
 }
