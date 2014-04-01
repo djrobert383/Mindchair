@@ -1,5 +1,5 @@
 package nxt;
-
+ 
 public enum SensorType {
-	Colorsensor, Lightsensor, Ultrasonicsensor, Preasuresensor
-}
+ 	Colorsensor, Lightsensor, Ultrasonicsensor, Preasuresensor
+ }

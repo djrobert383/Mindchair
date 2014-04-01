@@ -32,12 +32,12 @@ public class UltraSonicSensor extends lejos.nxt.UltrasonicSensor implements
 	public void removeListener(UltraSonicSensorListener usl) {
 		listeners.remove(usl);
 	}
-
+	
 	/**
-	 * 
+	 * 	
 	 * @return returns the type of the sensor
 	 */
-	public SensorType getSensorType() {
-		return SensorType.Ultrasonicsensor;
-	}
+	 public SensorType getSensorType(){
+	 	return SensorType.Ultrasonicsensor;
+	 }
 }
