@@ -80,6 +80,11 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 		    return 100 * (getRawLightValue() - _zero) /
 		                 ( _hundred - _zero); 
 	}
-		
-
+	/**
+	 * 	
+	 * @return returns the type of the sensor
+	 */
+	public SensorType getSensorType(){
+		return SensorType.Colorsensor;
+	}
 }
