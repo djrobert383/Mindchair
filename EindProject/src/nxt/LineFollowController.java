@@ -1,15 +1,19 @@
 package nxt;
 
-public class Controller extends Thread implements LightSensorListener,
-		UltraSonicSensorListener {
+public class LineFollowController extends Thread implements
+		LightSensorListener, UltraSonicSensorListener {
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
 	private boolean nothingInTheWay;
-	
-	
-	public Controller(){
+
+	public LineFollowController(ColorSensor cs, LightSensor ls,
+			UltraSonicSensor us) {
+		cs.addListener(this);
+		ls.addListener(this);
+		us.addListener(this);
 		this.start();
 	}
+
 	public void run() {
 		while (true) {
 			if (nothingInTheWay) {
