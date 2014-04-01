@@ -10,8 +10,10 @@ public class CalibreerController {
 	}
 	
 	public void calibreer(){
-		MotorController.turnOnPlace(360);
-		
+		for(int graden = 0;graden < 360;i++){
+			MotorController.turnOnPlace(1);
+			if()
+			
 	}
 
 }

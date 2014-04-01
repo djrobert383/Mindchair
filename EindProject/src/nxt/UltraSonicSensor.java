@@ -3,10 +3,6 @@ package nxt;
 import java.util.ArrayList;
 
 import lejos.nxt.SensorPort;
-/**
- * @author Robert
- * @version 0.2
- */
 
 public class UltraSonicSensor extends lejos.nxt.UltrasonicSensor implements
 		UpdatingSensor {

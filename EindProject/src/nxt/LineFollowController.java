@@ -1,9 +1,5 @@
 package nxt;
 
-/**
- * @author Robert
- * @version 0.2
- */
 public class LineFollowController extends Thread implements
 		LightSensorListener, UltraSonicSensorListener {
 	private boolean leftOnRoute;

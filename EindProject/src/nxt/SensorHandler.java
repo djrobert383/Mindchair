@@ -1,10 +1,6 @@
 package nxt;
 
 import java.util.ArrayList;
-/**
- * @author Robert
- * @version 0.2
- */
 
 public class SensorHandler extends Thread {
 	private static SensorHandler singleton;
