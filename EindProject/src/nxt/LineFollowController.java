@@ -5,6 +5,8 @@ public class LineFollowController extends Thread implements
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
 	private boolean nothingInTheWay;
+	
+	private final int MINIMUM_SAFE_DISTANCE = 30;
 
 	public LineFollowController(ColorSensor cs, LightSensor ls,
 			UltraSonicSensor us) {
@@ -33,7 +35,7 @@ public class LineFollowController extends Thread implements
 	@Override
 	public void ultraSonicChanged(UpdatingSensor us, float oldValue,
 			float newValue) {
-		if (newValue < 100) {
+		if (newValue < MINIMUM_SAFE_DISTANCE) {
 			nothingInTheWay = false;
 		} else {
 			nothingInTheWay = true;
