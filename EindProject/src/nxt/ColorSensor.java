@@ -22,6 +22,8 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	public ColorSensor(SensorPort sensorport, Position position) {
 		super(sensorport);
 		this.position = position;
+		setFloodlight(Color.RED);
+		setFloodlight(true);
 		SensorHandler.getInstance().addSensor(this);
 	}
 
@@ -67,23 +69,24 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	}
 
 	public void calibrateLow(int low) {
-	    _zero = low;
+		_zero = low;
 	}
-	 
+
 	public void calibrateHigh(int high) {
-		 _hundred = high;
-	 }
-	 
-	public int getNormalizedLightValue () {
-		    if(_hundred == _zero) return 0;
-		    return 100 * (getRawLightValue() - _zero) /
-		                 ( _hundred - _zero); 
+		_hundred = high;
 	}
+
+	public int getNormalizedLightValue() {
+		if (_hundred == _zero)
+			return 0;
+		return 100 * (getRawLightValue() - _zero) / (_hundred - _zero);
+	}
+
 	/**
-	 * 	
+	 * 
 	 * @return returns the type of the sensor
 	 */
-	public SensorType getSensorType(){
+	public SensorType getSensorType() {
 		return SensorType.Colorsensor;
 	}
 }

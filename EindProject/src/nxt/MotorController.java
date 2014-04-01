@@ -10,7 +10,7 @@ public class MotorController {
 	private final static NXTRegulatedMotor leftMotor = Motor.A;
 	private final static NXTRegulatedMotor rightMotor = Motor.B;
 	private float speed;
-	
+
 	private static DifferentialPilot differentialPilot = new DifferentialPilot(
 			wheelDiameter, wheelSpace, leftMotor, rightMotor);
 
@@ -33,7 +33,8 @@ public class MotorController {
 	public static void driveBackwards() {
 		differentialPilot.backward();
 	}
-	public static void driveDistance(float distance){
+
+	public static void driveDistance(float distance) {
 		differentialPilot.travel(distance);
 	}
 }

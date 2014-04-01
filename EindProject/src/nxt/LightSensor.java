@@ -21,6 +21,7 @@ public class LightSensor extends lejos.nxt.LightSensor implements
 	public LightSensor(SensorPort sensorport, Position position) {
 		super(sensorport);
 		this.position = position;
+		setFloodlight(true);
 		SensorHandler.getInstance().addSensor(this);
 	}
 

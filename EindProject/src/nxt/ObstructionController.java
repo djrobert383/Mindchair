@@ -1,21 +1,23 @@
 package nxt;
 
-public class ObstructionController extends Thread implements LightSensorListener, UltraSonicSensorListener{
-	
+public class ObstructionController extends Thread implements
+		LightSensorListener, UltraSonicSensorListener {
+
 	private int current_distance = 255;
-	
+
 	private final int SAFE_DISTANCE = 30;
-	
-	public ObstructionController(ColorSensor cs, LightSensor ls, UltraSonicSensor us) {
+
+	public ObstructionController(ColorSensor cs, LightSensor ls,
+			UltraSonicSensor us) {
 		cs.addListener(this);
 		ls.addListener(this);
 		us.addListener(this);
 	}
-	
-	public void run(){
-		while(true){
-			if(current_distance < SAFE_DISTANCE ){
-				try{
+
+	public void run() {
+		while (true) {
+			if (current_distance < SAFE_DISTANCE) {
+				try {
 					MotorController.stop();
 					MotorController.turnOnPlace(90);
 					MotorController.driveForward();
@@ -29,7 +31,8 @@ public class ObstructionController extends Thread implements LightSensorListener
 					MotorController.driveForward();
 					Thread.sleep(1500);
 					MotorController.turnOnPlace(90);
-				} catch (InterruptedException IE){}
+				} catch (InterruptedException IE) {
+				}
 			}
 		}
 	}
