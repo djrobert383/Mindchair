@@ -8,6 +8,7 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements UpdatingSensor
 
 	public ColorSensor(SensorPort sp) {
 		super(sp);
+		SensorHandler.getInstance().addSensor(this);
 		setFloodlight(Color.WHITE);
 	}
 

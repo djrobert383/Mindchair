@@ -2,27 +2,26 @@ package nxt;
 
 import java.util.ArrayList;
 
+import nxt.LightSensorListener.Position;
 import lejos.nxt.SensorPort;
 
-public class LightSensor extends lejos.nxt.LightSensor implements UpdatingSensor{
+public class LightSensor extends lejos.nxt.LightSensor implements
+		UpdatingSensor {
 	private float value;
-	private ArrayList<LeftSensorListener> leftlisteners = new ArrayList<LeftSensorListener>();
-	private ArrayList<RightSensorListener> rightlisteners = new ArrayList<RightSensorListener>();
-
-	public LightSensor(SensorPort sensorport) {
+	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();
+	private Position position;
+	public LightSensor(SensorPort sensorport, Position position) {
 		super(sensorport);
+		this.position=position;
+		SensorHandler.getInstance().addSensor(this);
 	}
+
 	public void updateState() {
 		float tmp = getNormalizedLightValue();
 		if (tmp != value) {
-			if (leftlisteners.size() < 0) {
-				for (LeftSensorListener lsl : leftlisteners) {
-					lsl.leftSensorChanged(this, value, tmp);
-				}
-			}
-			if (rightlisteners.size() < 0) {
-				for (RightSensorListener rsl : rightlisteners) {
-					rsl.rightSensorChanged(this, value, tmp);
+			if (listeners.size() < 0) {
+				for (LightSensorListener listener : listeners) {
+					listener.lightSensorChanged(position, this, value, tmp);
 				}
 			}
 			value = tmp;
@@ -30,26 +29,12 @@ public class LightSensor extends lejos.nxt.LightSensor implements UpdatingSensor
 
 	}
 
-	public void addRightListener(RightSensorListener rsl) {
-		rightlisteners.add(rsl);
+	public void addListener(LightSensorListener listener) {
+		listeners.add(listener);
 	}
 
-	public void addLeftListener(LeftSensorListener lsl) {
-		leftlisteners.add(lsl);
-	}
-
-	public void deleteRightListener(RightSensorListener rsl) {
-		boolean tmp = rightlisteners.remove(rsl);
-
-		if (tmp) {
-			System.out.println("removed");
-		} else {
-			System.err.print("not removed");
-		}
-	}
-
-	public void deleteLeftListener(RightSensorListener rsl) {
-		boolean tmp = leftlisteners.remove(rsl);
+	public void deleteListener(LightSensorListener listener) {
+		boolean tmp = listeners.remove(listener);
 
 		if (tmp) {
 			System.out.println("removed");

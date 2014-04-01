@@ -11,6 +11,7 @@ public class UltraSonicSensor extends lejos.nxt.UltrasonicSensor implements
 
 	public UltraSonicSensor(SensorPort sensorport) {
 		super(sensorport);
+		SensorHandler.getInstance().addSensor(this);
 	}
 
 	public void updateState() {
