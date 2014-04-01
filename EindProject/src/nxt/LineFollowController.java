@@ -5,10 +5,12 @@ public class LineFollowController extends Thread implements
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
 	private boolean nothingInTheWay;
-	
+	private static boolean pause;
+
 	private final int MINIMUM_SAFE_DISTANCE = 30;
 
-	public LineFollowController(ColorSensor cs, LightSensor ls, UltraSonicSensor us) {
+	public LineFollowController(ColorSensor cs, LightSensor ls,
+			UltraSonicSensor us) {
 		cs.addListener(this);
 		ls.addListener(this);
 		us.addListener(this);
@@ -17,16 +19,18 @@ public class LineFollowController extends Thread implements
 
 	public void run() {
 		while (true) {
-			if (nothingInTheWay) {
-				if (!leftOnRoute) {
-					MotorController.turnOnPlace(-5);
-				} else if (!rightOnRoute) {
-					MotorController.turnOnPlace(5);
+			if (!pause) {
+				if (nothingInTheWay) {
+					if (!leftOnRoute) {
+						MotorController.turnOnPlace(-5);
+					} else if (!rightOnRoute) {
+						MotorController.turnOnPlace(5);
+					} else {
+						MotorController.driveForward();
+					}
 				} else {
-					MotorController.driveForward();
+					MotorController.stop();
 				}
-			} else {
-				MotorController.stop();
 			}
 		}
 	}
@@ -58,6 +62,14 @@ public class LineFollowController extends Thread implements
 				rightOnRoute = true;
 			}
 		}
+	}
+
+	public static void pauseLineFollowing() {
+		pause = true;
+	}
+
+	public static void continueLineFollowing() {
+		pause = false;
 	}
 
 }

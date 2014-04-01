@@ -26,8 +26,7 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	}
 
 	/**
-	 * check if the input of the colorsensor has changed, if so tell it to all
-	 * the listeners
+	 * @see UpdatingSensor.updateState()
 	 */
 	public void updateState() {
 		float tmp = getNormalizedLightValue();
