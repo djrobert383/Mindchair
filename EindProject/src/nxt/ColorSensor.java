@@ -12,24 +12,12 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	private int zero = 1023;
 	private int hundred = 0;
 
-	/**
-	 * 
-	 * @param sensorport
-	 *            the port the colorsensor is connected to on the nxt
-	 * @param position
-	 *            the position on the robot of the sensor
-	 */
 	public ColorSensor(SensorPort sensorport, Position position) {
 		super(sensorport);
 		this.position = position;
-		setFloodlight(Color.RED);
-		setFloodlight(true);
 		SensorHandler.getInstance().addSensor(this);
 	}
 
-	/**
-	 * @see UpdatingSensor.updateState()
-	 */
 	public void updateState() {
 		float tmp = getNormalizedLightValue();
 		if (tmp != value) {
@@ -43,21 +31,10 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 
 	}
 
-	/**
-	 * add a listener to the list of listeners so the sensor knows who to tell
-	 * it has changed
-	 * 
-	 * @param listener
-	 */
 	public void addListener(LightSensorListener listener) {
 		listeners.add(listener);
 	}
 
-	/**
-	 * remove the listener so it won't get any updates
-	 * 
-	 * @param listener
-	 */
 	public void deleteListener(LightSensorListener listener) {
 		boolean tmp = listeners.remove(listener);
 
@@ -83,10 +60,10 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	}
 
 	/**
-	 * 
+	 * 	
 	 * @return returns the type of the sensor
 	 */
-	public SensorType getSensorType() {
-		return SensorType.Colorsensor;
-	}
+	 public SensorType getSensorType(){
+	 	return SensorType.Colorsensor;
+	 }
 }

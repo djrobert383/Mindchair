@@ -17,7 +17,7 @@ public class CalibreerController {
 		int position = 0;
 		MotorController.turnOnPlace(360, true);
 
-		while (MotorController.isMoving()) {
+		while (MotorController.moving()) {
 			for (UpdatingSensor sensor : returnArrayList) {
 
 				if (sensor.getSensorType() == SensorType.Colorsensor) {

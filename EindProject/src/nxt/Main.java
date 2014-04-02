@@ -16,6 +16,7 @@ public class Main {
 		sensors.add(cs);
 		sensors.add(ls);
 		sensors.add(us);
+
 		System.out.println(cs.getHigh());
 		System.out.println(cs.getLow());
 		sensors = new CalibreerController().calibreer(sensors);

@@ -1,8 +1,7 @@
 package nxt;
 
-public class ObstructionController extends Thread implements
-		LightSensorListener, UltraSonicSensorListener {
-
+public class ObstructionController extends Thread implements LightSensorListener, UltraSonicSensorListener{
+	
 	private int current_distance = 255;
 	private int sensor_value_left = 0;
 	private int sensor_value_right = 0;
@@ -19,7 +18,6 @@ public class ObstructionController extends Thread implements
 		cs.addListener(this);
 		ls.addListener(this);
 		us.addListener(this);
-
 	}
 
 	public void run() {
@@ -39,12 +37,12 @@ public class ObstructionController extends Thread implements
 
 			if (current_distance < SAFE_DISTANCE) {
 
-				MotorController.rotate(-90);
-				MotorController.arc((SAFE_DISTANCE * 10), ARC_DEGREES, true); // RADIUS
-																				// ,
+				MotorController.turnOnPlace(-90);
+				MotorController.DriveArc(SAFE_DISTANCE * 10), ARC_DEGREES, true); // RADIUS
+																			// ,
 																				// ANGLE
 
-				while (MotorController.isMoving()) {
+				while (MotorController.moving()) {
 
 					if (sensor_value_left < LIGHT_LOW
 							|| sensor_value_right < LIGHT_LOW)
@@ -60,21 +58,37 @@ public class ObstructionController extends Thread implements
 
 	}
 
-	@Override
-	public void ultraSonicChanged(UpdatingSensor us, float oldValue,
-			float newValue) {
+ /* Wats deze??
+	private void evasiveManoeuvre() {
+		
+		MotorController.stop();
+		MotorController.driveArc((SAFE_DISTANCE*10),true);
+		
+		while(true){
+			System.out.println(sensor_value_left + " \t" + sensor_value_right);
+			if(sensor_value_left < LIGHT_LOW){
+				MotorController.stop();
+				
+				
+			} else if(sensor_value_right < LIGHT_LOW){
+				MotorController.stop();
+				
+			}
+		}
+		
+*/
 
+	@Override
+	public void ultraSonicChanged(UpdatingSensor us, float oldValue, float newValue) {
+		
 		current_distance = (int) newValue;
 	}
 
 	@Override
-	public void lightSensorChanged(Position position,
-			UpdatingSensor updatingsensor, float oldValue, float newValue) {
-
+	public void lightSensorChanged(Position position, UpdatingSensor updatingsensor, float oldValue, float newValue) {
 		if (position == Position.Left)
 			sensor_value_left = (int) newValue;
 		else if (position == Position.Right)
 			sensor_value_right = (int) newValue;
-
 	}
 }

@@ -3,13 +3,16 @@ package nxt;
 public class LineFollowController extends Thread implements LightSensorListener {
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
-	private boolean nothingInTheWay;
+	private boolean nothingInTheWay;	
+	//private final int MINIMUM_SAFE_DISTANCE = 50;
 	private static boolean pause;
 
 	public LineFollowController(ColorSensor cs, LightSensor ls) {
+		pause = false;
 		cs.addListener(this);
 		ls.addListener(this);
 		this.start();
+
 	}
 
 	public void run() {
@@ -24,8 +27,10 @@ public class LineFollowController extends Thread implements LightSensorListener 
 						MotorController.driveForward();
 					}
 				} else {
-
+					MotorController.driveForward();
 				}
+			} else {
+				MotorController.stop();
 			}
 		}
 	}
@@ -48,13 +53,4 @@ public class LineFollowController extends Thread implements LightSensorListener 
 			}
 		}
 	}
-
-	public static void pauseLineFollowing() {
-		pause = true;
-	}
-
-	public static void continueLineFollowing() {
-		pause = false;
-	}
-
 }
