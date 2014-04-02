@@ -9,8 +9,8 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	private float value;
 	private Position position;
 	private ArrayList<LightSensorListener> listeners = new ArrayList<LightSensorListener>();
-	private int _zero = 1023;
-	private int _hundred = 0;
+	private int zero = 1023;
+	private int hundred = 0;
 
 	/**
 	 * 
@@ -69,17 +69,17 @@ public class ColorSensor extends lejos.nxt.ColorSensor implements
 	}
 
 	public void calibrateLow(int low) {
-		_zero = low;
+		zero = low;
 	}
 
 	public void calibrateHigh(int high) {
-		_hundred = high;
+		hundred = high;
 	}
 
 	public int getNormalizedLightValue() {
-		if (_hundred == _zero)
+		if (hundred == zero)
 			return 0;
-		return 100 * (getRawLightValue() - _zero) / (_hundred - _zero);
+		return 100 * (getRawLightValue() - zero) / (hundred - zero);
 	}
 
 	/**
