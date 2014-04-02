@@ -7,12 +7,13 @@ import lejos.nxt.SensorPort;
 
 public class Main {
 	public static void main(String[] args) {
+		//
 		Button.waitForAnyPress();
 		ColorSensor cs = new ColorSensor(SensorPort.S1, Position.Left);
-		ColorSensor cs2 ;
 		LightSensor ls = new LightSensor(SensorPort.S2, Position.Right);
 		UltraSonicSensor us = new UltraSonicSensor(SensorPort.S4);
-		ArrayList<UpdatingSensor> sensors = new ArrayList<UpdatingSensor>();
+		new LineFollowController(cs, ls);
+		/*ArrayList<UpdatingSensor> sensors = new ArrayList<UpdatingSensor>();
 		sensors.add(cs);
 		sensors.add(ls);
 		sensors.add(us);
@@ -33,6 +34,6 @@ public class Main {
 		System.out.println(cs.getHigh());
 		System.out.println(cs.getLow());
 
-		Button.waitForAnyPress();
+		Button.waitForAnyPress();*/
 	}
 }

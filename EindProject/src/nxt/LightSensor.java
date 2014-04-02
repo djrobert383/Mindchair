@@ -18,7 +18,7 @@ public class LightSensor extends lejos.nxt.LightSensor implements
 	public void updateState() {
 		float tmp = getNormalizedLightValue();
 		if (tmp != value) {
-			if (listeners.size() < 0) {
+			if (listeners.size() > 0) {
 				for (LightSensorListener listener : listeners) {
 					listener.lightSensorChanged(position, this, value, tmp);
 				}

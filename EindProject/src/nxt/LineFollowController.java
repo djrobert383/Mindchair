@@ -1,52 +1,63 @@
 package nxt;
 
+import lejos.nxt.LCD;
+
 public class LineFollowController extends Thread implements LightSensorListener {
 	private boolean leftOnRoute;
 	private boolean rightOnRoute;
-	private boolean nothingInTheWay;	
-	//private final int MINIMUM_SAFE_DISTANCE = 50;
-	private static boolean pause;
+	private boolean nothingInTheWay;
+	private static float TRESHOLD = 20;
+
+	private static boolean pause = false;
 
 	public LineFollowController(ColorSensor cs, LightSensor ls) {
-		pause = false;
+		System.out.println("initialized");
 		cs.addListener(this);
 		ls.addListener(this);
-		this.start();
+		start();
 
 	}
 
 	public void run() {
 		while (true) {
+
 			if (!pause) {
-				if (nothingInTheWay) {
-					if (!leftOnRoute) {
-						MotorController.turnOnPlace(-5, false);
-					} else if (!rightOnRoute) {
-						MotorController.turnOnPlace(5, false);
-					} else {
-						MotorController.driveForward();
-					}
+				if (!leftOnRoute) {
+					LCD.drawString(""+leftOnRoute, 0, 0);
+					LCD.drawString(""+rightOnRoute, 0, 2);
+					LCD.drawString("ERROR", 0, 5);
+					MotorController.turnOnPlace(-5, false);
+				} else if (!rightOnRoute) {
+					LCD.drawString(""+leftOnRoute, 0, 0);
+					LCD.drawString(""+rightOnRoute, 0, 2);
+					LCD.drawString("ERROR", 0, 5);
+					MotorController.turnOnPlace(5, false);
 				} else {
+					LCD.drawString(""+leftOnRoute, 0, 0);
+					LCD.drawString(""+rightOnRoute, 0, 2);
+					LCD.drawString("Forward", 0, 5);
 					MotorController.driveForward();
 				}
 			} else {
-				MotorController.stop();
+				MotorController.driveForward();
 			}
 		}
+
 	}
 
 	@Override
 	public void lightSensorChanged(Position position,
 			UpdatingSensor updatingsensor, float oldValue, float newValue) {
+		LCD.drawInt((int) newValue, 0, 7);
 		if (position == Position.Left) {
-			if (newValue < 50) {
+			if (newValue > TRESHOLD ) {
 				leftOnRoute = false;
 			} else {
 				leftOnRoute = true;
 			}
 		}
 		if (position == Position.Right) {
-			if (newValue < 50) {
+			if (newValue > TRESHOLD) {
 				rightOnRoute = false;
 			} else {
 				rightOnRoute = true;
